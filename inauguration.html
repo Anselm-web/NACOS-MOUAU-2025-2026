@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){try{var t=localStorage.getItem('nacos-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inauguration Ceremony 2025 | NACOS MOUAU</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── FEATURED VIDEO BOX ── */
+    .featured-video-box {
+      aspect-ratio: 9/16;
+      max-width: 380px;
+      background: linear-gradient(135deg, #0a3d1f 0%, #1a6b3a 100%);
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 32px;
+      cursor: pointer;
+      transition: var(--ease);
+    }
+    .featured-video-box:hover { box-shadow: var(--sh-lg); }
+    .featured-video-box .featured-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--gold);
+      color: #0a3d1f;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 4px;
+      z-index: 2;
+    }
+    .featured-video-box .play-ring-lg {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      border: 2px solid rgba(255,255,255,.55);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.8rem;
+      transition: var(--ease);
+      position: relative; z-index: 2;
+    }
+    .featured-video-box:hover .play-ring-lg { background: rgba(255,255,255,.3); transform: scale(1.08); }
+    .featured-video-box .featured-title {
+      position: absolute; bottom: 20px; left: 20px; right: 20px;
+      font-family: var(--ff-head); font-size: .95rem; font-weight: 700;
+      color: #fff; z-index: 2;
+    }
+    /* cover image fills the box */
+    .featured-video-box .cover-bg {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center top;
+      filter: brightness(0.55);
+    }
+
+    /* ── VIDEO MODAL ── */
+    .vid-modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.85); align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .vid-modal-overlay.open { display: flex; }
+    .vid-modal-inner {
+      position: relative; width: 100%; max-width: 420px;
+      aspect-ratio: 9/16; background: #000; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,.6);
+    }
+    .vid-modal-inner video { width: 100%; height: 100%; border: none; display: block; }
+    .vid-modal-close {
+      position: absolute; top: -44px; right: 0;
+      background: none; border: none; color: #fff; font-size: 2rem;
+      cursor: pointer; line-height: 1; opacity: .8; transition: opacity .2s;
+    }
+    .vid-modal-close:hover { opacity: 1; }
+
+    @media(max-width:600px){
+      .featured-video-box { max-width: 100%; aspect-ratio: 9/16; }
+    }
+  </style>
+</head>
+<body>
+<div id="sitePreloader" class="preloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <img src="images/nacos-logo.png" alt="" class="preloader-logo"/>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+</div>
+<noscript><style>.preloader{display:none!important;}</style></noscript>
+
+
+<header class="navbar scrolled" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/nacos-logo.png" alt="NACOS" class="logo-img"/>
+      <img src="images/mouau-logo.png" alt="MOUAU" class="logo-img"/>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html"        class="nav-link">Home</a>
+      <a href="achievements.html" class="nav-link active">Achievements</a>
+      <a href="executives.html"   class="nav-link">Executives</a>
+      <a href="administration.html" class="nav-link">Administration</a>
+      <a href="contact.html"      class="nav-link">Contact</a>
+    </nav>
+    <a href="executives.html" class="btn btn-green nav-cta">See More</a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="ti ti-sun"></i><i class="ti ti-moon"></i></button>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="page-hero-band">
+  <div class="inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <a href="achievements.html">Achievements</a>
+      <span>/</span>
+      <span class="cur">Inauguration Ceremony 2025</span>
+    </div>
+    <h1>Inauguration Ceremony 2025</h1>
+    <p>The official inauguration of the 2025/2026 NACOS MOUAU executive team — a landmark moment marking the beginning of a new chapter in student-led tech governance.</p>
+    <div class="meta-pills">
+      <div class="meta-pill"><i class="ti ti-calendar"></i><span>26th November, 2025</span></div>
+      <div class="meta-pill"><i class="ti ti-map-pin"></i><span>Old Colpas Hall</span></div>
+      <div class="meta-pill"><i class="ti ti-users"></i><span>NACOS MOUAU</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+  <a href="achievements.html" class="back-link"><i class="ti ti-arrow-left"></i> Back to Achievements</a>
+
+  <div class="stats-strip">
+    <div class="stat-box"><p class="snum">2025</p><p class="slbl">Session Start</p></div>
+    <div class="stat-box"><p class="snum">26</p><p class="slbl">November</p></div>
+    <div class="stat-box"><p class="snum">1</p><p class="slbl">Historic Day</p></div>
+    <div class="stat-box"><p class="snum">100%</p><p class="slbl">New Start</p></div>
+  </div>
+
+  <p class="sec-label">About this event</p>
+  <p class="about-text">The Inauguration Ceremony marked the formal swearing-in of the 2025/2026 NACOS MOUAU executive team, led by Comr. Ario Benelizer Nwachukwu as President-Elect. Held at the Old Colpas Hall on Wednesday 26th November 2025 starting at 12 Noon, the event ushered in a new era of leadership committed to technological excellence, student welfare, and innovation at Michael Okpara University of Agriculture, Umudike.</p>
+
+  <!-- VIDEO — single portrait video with flyer as cover -->
+  <p class="sec-label">Event Highlights Video</p>
+  <div class="featured-video-box" data-video="videos/inauguration.mp4">
+    <div class="cover-bg" style="background-image:url('images/inauguration.jpg');"></div>
+    <span class="featured-badge">&#9733; Featured Video</span>
+    <div class="play-ring-lg"><i class="ti ti-player-play"></i></div>
+    <span class="featured-title">Inauguration Ceremony 2025 Highlights</span>
+  </div>
+
+  <!-- EXECUTIVES INAUGURATED -->
+  <p class="sec-label">Key Officials Inaugurated</p>
+  <div class="speakers-grid" style="margin-bottom:32px;">
+    <div class="speaker-card">
+      <div class="spk-av"><span>AB</span></div>
+      <p class="spk-name">Comr. Ario Benelizer Nwachukwu</p>
+      <p class="spk-role">President-Elect, NACOS MOUAU</p>
+    </div>
+    <div class="speaker-card">
+      <div class="spk-av"><span>OI</span></div>
+      <p class="spk-name">Comr. Onuoha Isaac Chinaecherem</p>
+      <p class="spk-role">PRO 1 Elect, NACOS MOUAU</p>
+    </div>
+    <div class="speaker-card">
+      <div class="spk-av"><span>NA</span></div>
+      <p class="spk-name">NACOS MOUAU Executives</p>
+      <p class="spk-role">2025/2026 Full Executive Council</p>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="fi">
+    <div>
+      <p class="sf-name">2025/2026 NACOS EXECUTIVES</p>
+      <p class="sf-tag">Shaping the university's digital future through strong technical leadership and governance.</p>
+    </div>
+    <div class="sf-col">
+      <h4>Resources</h4>
+      <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Faculty Portal</a>
+    </div>
+    <div class="sf-col">
+      <h4>Contact</h4>
+      <a href="https://mail.google.com/mail/?view=cm&to=nacosltd@gmail.com" target="_blank" rel="noopener">nacosltd@gmail.com</a>
+      <span>Michael Okpara University Of Agriculture Umudike</span>
+    </div>
+  </div>
+  <p class="sf-copy">&copy; By Chikezie Chimaobi Aselm. All rights reserved.</p>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="vid-modal-overlay" id="vidModal">
+  <div class="vid-modal-inner" id="vidModalInner">
+    <button class="vid-modal-close" id="vidModalClose">&times;</button>
+    <video id="vidModalVideo" controls style="width:100%;height:100%;display:block;background:#000;"></video>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+(function(){
+  var modal    = document.getElementById('vidModal');
+  var inner    = document.getElementById('vidModalInner');
+  var video    = document.getElementById('vidModalVideo');
+  var closeBtn = document.getElementById('vidModalClose');
+
+  video.addEventListener('loadedmetadata', function(){
+    if (video.videoHeight > video.videoWidth) {
+      inner.style.aspectRatio = '9/16';
+      inner.style.maxWidth = '420px';
+    } else {
+      inner.style.aspectRatio = '16/9';
+      inner.style.maxWidth = '860px';
+    }
+  });
+
+  document.querySelectorAll('[data-video]').forEach(function(el){
+    el.addEventListener('click', function(){
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function(){
+        video.src = el.dataset.video;
+        video.load();
+        video.play().catch(function(err){ console.log('Play error:', err); });
+      }, 50);
+    });
+  });
+
+  function closeModal(){
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+  }
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+})();
+</script>
+
+</body>
+</html>

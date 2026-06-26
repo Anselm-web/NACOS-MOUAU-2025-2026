@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){try{var t=localStorage.getItem('nacos-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NACOS Free Tutorial 2026 | NACOS MOUAU</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── COVER FLYER DISPLAY ── */
+    .cover-flyer-wrap {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .cover-flyer-img {
+      flex: 0 0 auto;
+      width: 280px;
+      border-radius: var(--r-md);
+      overflow: hidden;
+      box-shadow: var(--sh-lg);
+    }
+    .cover-flyer-img img {
+      width: 100%;
+      display: block;
+    }
+    .cover-flyer-info {
+      flex: 1;
+      min-width: 240px;
+    }
+    .cover-flyer-info h3 {
+      font-family: var(--ff-head);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--txt-dark);
+      margin-bottom: 10px;
+    }
+    .cover-flyer-info p {
+      color: var(--txt-mid);
+      font-size: .92rem;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    /* ── FEATURED VIDEO BOX — landscape ── */
+    .featured-video-box {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #0a3d1f 0%, #1a6b3a 100%);
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 32px;
+      cursor: pointer;
+      transition: var(--ease);
+    }
+    .featured-video-box:hover { box-shadow: var(--sh-lg); }
+    .featured-video-box .featured-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--gold);
+      color: #0a3d1f;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 4px;
+      z-index: 2;
+    }
+    .featured-video-box .play-ring-lg {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      border: 2px solid rgba(255,255,255,.55);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.8rem;
+      transition: var(--ease);
+      position: relative; z-index: 2;
+    }
+    .featured-video-box:hover .play-ring-lg { background: rgba(255,255,255,.3); transform: scale(1.08); }
+    .featured-video-box .featured-title {
+      position: absolute; bottom: 20px; left: 20px;
+      font-family: var(--ff-head); font-size: 1rem; font-weight: 700;
+      color: #fff; z-index: 2;
+    }
+    .featured-video-box .cover-bg {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.45);
+    }
+
+    /* ── VIDEO MODAL ── */
+    .vid-modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.85); align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .vid-modal-overlay.open { display: flex; }
+    .vid-modal-inner {
+      position: relative; width: 100%; max-width: 860px;
+      aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,.6);
+    }
+    .vid-modal-inner video { width: 100%; height: 100%; border: none; display: block; }
+    .vid-modal-close {
+      position: absolute; top: -44px; right: 0;
+      background: none; border: none; color: #fff; font-size: 2rem;
+      cursor: pointer; line-height: 1; opacity: .8; transition: opacity .2s;
+    }
+    .vid-modal-close:hover { opacity: 1; }
+
+    @media(max-width:600px){
+      .cover-flyer-img { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+<div id="sitePreloader" class="preloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <img src="images/nacos-logo.png" alt="" class="preloader-logo"/>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+</div>
+<noscript><style>.preloader{display:none!important;}</style></noscript>
+
+
+<header class="navbar scrolled" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/nacos-logo.png" alt="NACOS" class="logo-img"/>
+      <img src="images/mouau-logo.png" alt="MOUAU" class="logo-img"/>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html"        class="nav-link">Home</a>
+      <a href="achievements.html" class="nav-link active">Achievements</a>
+      <a href="executives.html"   class="nav-link">Executives</a>
+      <a href="administration.html" class="nav-link">Administration</a>
+      <a href="contact.html"      class="nav-link">Contact</a>
+    </nav>
+    <a href="executives.html" class="btn btn-green nav-cta">See More</a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="ti ti-sun"></i><i class="ti ti-moon"></i></button>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="page-hero-band">
+  <div class="inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <a href="achievements.html">Achievements</a>
+      <span>/</span>
+      <span class="cur">NACOS Free Tutorial 2026</span>
+    </div>
+    <h1>NACOS Free Tutorial 2026</h1>
+    <p>A free academic tutorial for all Nacosite students from 100L to 400L covering key courses across all levels, in partnership with Hypers &amp; Elites Tutorial.</p>
+    <div class="meta-pills">
+      <div class="meta-pill"><i class="ti ti-calendar"></i><span>15th–17th January, 2026</span></div>
+      <div class="meta-pill"><i class="ti ti-map-pin"></i><span>New Colpas Hall</span></div>
+      <div class="meta-pill"><i class="ti ti-clock"></i><span>4:00 PM</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+  <a href="achievements.html" class="back-link"><i class="ti ti-arrow-left"></i> Back to Achievements</a>
+
+  <div class="stats-strip">
+    <div class="stat-box"><p class="snum">4</p><p class="slbl">Levels Covered</p></div>
+    <div class="stat-box"><p class="snum">3</p><p class="slbl">Days</p></div>
+    <div class="stat-box"><p class="snum">Free</p><p class="slbl">For All Nacosites</p></div>
+    <div class="stat-box"><p class="snum">100%</p><p class="slbl">Student Welfare</p></div>
+  </div>
+
+  <p class="sec-label">About this event</p>
+  <div class="cover-flyer-wrap">
+    <div class="cover-flyer-img">
+      <img src="images/nacos-tutorial.jpg" alt="NACOS Free Tutorial 2026 Flyer"/>
+    </div>
+    <div class="cover-flyer-info">
+      <h3>Free Tutorial for All Nacosites 100L to 400L</h3>
+      <p>The 2025/2026 NACOS MOUAU executives organised a comprehensive free tutorial programme for all Nacosite students across every level, held at New Colpas Hall from 15th to 17th January 2026.</p>
+      <p>In partnership with Hypers &amp; Elites Tutorial, the programme covered MTH 112, CHM 113, PHY 112, MTH 211, STAT 212, CSC 218, CSC 318, CSC 314, CSC 316, CSC 418, CSC 414 and CSC 411 — with gifts including cash giveaways, calculators, and past questions for participants.</p>
+      <p>Coordinated by NACOS President Comr. Ario Benelizer Nwachukwu alongside Sec-Gen Comr. Ndukwe Okechi Peter and Librarian Comr. Kalu Moses Uchechukwu.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO — single landscape video with flyer as cover -->
+  <p class="sec-label">Event Video</p>
+  <div class="featured-video-box" data-video="videos/nacos-tutorial.mp4">
+    <div class="cover-bg" style="background-image:url('images/nacos-tutorial.jpg');"></div>
+    <span class="featured-badge">&#9733; Featured Video</span>
+    <div class="play-ring-lg"><i class="ti ti-player-play"></i></div>
+    <span class="featured-title">NACOS Free Tutorial 2026 Highlights</span>
+  </div>
+
+  <!-- ORGANISERS -->
+  <p class="sec-label">Key Organisers</p>
+  <div class="speakers-grid" style="margin-bottom:32px;">
+    <div class="speaker-card">
+      <div class="spk-av"><span>AB</span></div>
+      <p class="spk-name">Comr. Ario Benelizer Nwachukwu</p>
+      <p class="spk-role">NACOS President</p>
+    </div>
+    <div class="speaker-card">
+      <div class="spk-av"><span>NO</span></div>
+      <p class="spk-name">Comr. Ndukwe Okechi Peter</p>
+      <p class="spk-role">NACOS Secretary General</p>
+    </div>
+    <div class="speaker-card">
+      <div class="spk-av"><span>KM</span></div>
+      <p class="spk-name">Comr. Kalu Moses Uchechukwu</p>
+      <p class="spk-role">NACOS Librarian</p>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="fi">
+    <div>
+      <p class="sf-name">2025/2026 NACOS EXECUTIVES</p>
+      <p class="sf-tag">Shaping the university's digital future through strong technical leadership and governance.</p>
+    </div>
+    <div class="sf-col">
+      <h4>Resources</h4>
+      <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Faculty Portal</a>
+    </div>
+    <div class="sf-col">
+      <h4>Contact</h4>
+      <a href="https://mail.google.com/mail/?view=cm&to=nacosltd@gmail.com" target="_blank" rel="noopener">nacosltd@gmail.com</a>
+      <span>Michael Okpara University Of Agriculture Umudike</span>
+    </div>
+  </div>
+  <p class="sf-copy">&copy; By Chikezie Chimaobi Aselm. All rights reserved.</p>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="vid-modal-overlay" id="vidModal">
+  <div class="vid-modal-inner" id="vidModalInner">
+    <button class="vid-modal-close" id="vidModalClose">&times;</button>
+    <video id="vidModalVideo" controls style="width:100%;height:100%;display:block;background:#000;"></video>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+(function(){
+  var modal    = document.getElementById('vidModal');
+  var inner    = document.getElementById('vidModalInner');
+  var video    = document.getElementById('vidModalVideo');
+  var closeBtn = document.getElementById('vidModalClose');
+
+  video.addEventListener('loadedmetadata', function(){
+    if (video.videoHeight > video.videoWidth) {
+      inner.style.aspectRatio = '9/16';
+      inner.style.maxWidth = '420px';
+    } else {
+      inner.style.aspectRatio = '16/9';
+      inner.style.maxWidth = '860px';
+    }
+  });
+
+  document.querySelectorAll('[data-video]').forEach(function(el){
+    el.addEventListener('click', function(){
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function(){
+        video.src = el.dataset.video;
+        video.load();
+        video.play().catch(function(err){ console.log('Play error:', err); });
+      }, 50);
+    });
+  });
+
+  function closeModal(){
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+  }
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+})();
+</script>
+
+</body>
+</html>

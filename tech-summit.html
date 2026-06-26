@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  HOW TO SWAP VIDEOS
+  ============================================================
+  Each video box has a data-video="videos/placeholder.mp4" attribute.
+  To replace a placeholder with your real video:
+
+  1. Upload your video to YouTube (or find the video URL)
+  2. Copy the YouTube Video ID from the URL:
+     e.g. https://www.youtube.com/watch?v=ABC123xyz
+                                              ^^^^^^^^^^^ this part
+  3. Find the video box in this file and change:
+     data-video="videos/placeholder.mp4"
+     to:
+     data-video="videos/placeholder.mp4"
+
+  The modal will automatically play it when clicked.
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <script>(function(){try{var t=localStorage.getItem('nacos-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nacos Tech Summit 2026 | NACOS MOUAU</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    /* Portrait video grid — 4 boxes */
+    .portrait-video-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .portrait-video-box {
+      aspect-ratio: 9/16;
+      background: #0e1e13;
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--ease);
+    }
+    .portrait-video-box:hover { transform: translateY(-4px); box-shadow: var(--sh-md); }
+    .portrait-video-box .play-ring {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      border: 2px solid rgba(255,255,255,.5);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.2rem;
+      transition: var(--ease);
+    }
+    .portrait-video-box:hover .play-ring { background: rgba(255,255,255,.28); }
+    .portrait-video-box .vid-dur {
+      position: absolute; bottom: 10px; right: 10px;
+      font-size: .72rem; font-weight: 600; color: rgba(255,255,255,.75);
+      background: rgba(0,0,0,.45); padding: 2px 7px; border-radius: 4px;
+    }
+    .portrait-video-box .vid-label {
+      position: absolute; bottom: 10px; left: 10px; right: 56px;
+      font-size: .72rem; color: rgba(255,255,255,.8); line-height: 1.3;
+    }
+
+    /* Landscape featured video */
+    .featured-video-box {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #0a3d1f 0%, #1a6b3a 100%);
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 32px;
+      cursor: pointer;
+      transition: var(--ease);
+    }
+    .featured-video-box:hover { box-shadow: var(--sh-lg); }
+    .featured-video-box .featured-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--gold);
+      color: #0a3d1f;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 4px;
+    }
+    .featured-video-box .play-ring-lg {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      border: 2px solid rgba(255,255,255,.55);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.8rem;
+      transition: var(--ease);
+    }
+    .featured-video-box:hover .play-ring-lg { background: rgba(255,255,255,.3); transform: scale(1.08); }
+    .featured-video-box .featured-title {
+      position: absolute; bottom: 20px; left: 20px;
+      font-family: var(--ff-head); font-size: 1rem; font-weight: 700;
+      color: #fff;
+    }
+    .featured-video-box .vid-dur-lg {
+      position: absolute; bottom: 20px; right: 20px;
+      font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.75);
+      background: rgba(0,0,0,.4); padding: 3px 10px; border-radius: 4px;
+    }
+
+    /* 6-speaker grid */
+    .speakers-grid-6 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media(max-width:768px){
+      .portrait-video-grid { grid-template-columns: repeat(2, 1fr); }
+      .speakers-grid-6 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(max-width:480px){
+      .portrait-video-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .speakers-grid-6 { grid-template-columns: 1fr 1fr; }
+    }
+  
+  /* ── VIDEO MODAL ── */
+  .vid-modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,.85); align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .vid-modal-overlay.open { display: flex; }
+  .vid-modal-inner {
+    position: relative; width: 100%; max-width: 860px;
+    aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,.6);
+  }
+  .vid-modal-inner video { width: 100%; height: 100%; border: none; display: block; }
+  .vid-modal-close {
+    position: absolute; top: -44px; right: 0;
+    background: none; border: none; color: #fff; font-size: 2rem;
+    cursor: pointer; line-height: 1; opacity: .8; transition: opacity .2s;
+  }
+  .vid-modal-close:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+<div id="sitePreloader" class="preloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <img src="images/nacos-logo.png" alt="" class="preloader-logo"/>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+</div>
+<noscript><style>.preloader{display:none!important;}</style></noscript>
+
+
+<header class="navbar scrolled" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/nacos-logo.png" alt="NACOS" class="logo-img"/>
+      <img src="images/mouau-logo.png" alt="MOUAU" class="logo-img"/>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html"        class="nav-link">Home</a>
+      <a href="achievements.html" class="nav-link active">Achievements</a>
+      <a href="executives.html"   class="nav-link">Executives</a>
+      <a href="contact.html"      class="nav-link">Contact</a>
+    </nav>
+    <a href="executives.html" class="btn btn-green nav-cta">See More</a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="ti ti-sun"></i><i class="ti ti-moon"></i></button>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="page-hero-band">
+  <div class="inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <a href="achievements.html">Achievements</a>
+      <span>/</span>
+      <span class="cur">Nacos Tech Summit 2026</span>
+    </div>
+    <h1>Nacos Tech Summit 2026</h1>
+    <p>Connecting industry leaders and students to share ideas, advance technical excellence, and inspire the next generation of technology professionals.</p>
+    <div class="meta-pills">
+      <div class="meta-pill"><i class="ti ti-calendar"></i><span> 28th March,2026</span></div>
+      <div class="meta-pill"><i class="ti ti-map-pin"></i><span>New Colpas Hall</span></div>
+      <div class="meta-pill"><i class="ti ti-users"></i><span>400+ attendees</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+  <a href="achievements.html" class="back-link"><i class="ti ti-arrow-left"></i> Back to Achievements</a>
+
+  <div class="stats-strip">
+    <div class="stat-box"><p class="snum">400+</p><p class="slbl">Attendees</p></div>
+    <div class="stat-box"><p class="snum">7</p><p class="slbl">Speakers</p></div>
+    <div class="stat-box"><p class="snum">2</p><p class="slbl">Workshops</p></div>
+    <div class="stat-box"><p class="snum">5</p><p class="slbl">Panelist</p></div>
+  </div>
+
+  <p class="sec-label">About this event</p>
+  <p class="about-text">TThe NACOS Tech Summit 2026 brought together software engineers, designers, entrepreneurs, and computer science students for a full day of talks, panels, and hands-on workshops. Industry experts from Cowrywise, Google Developer Groups, and Danify International, alongside MOUAU faculty, inspired the next generation of tech professionals. The event, a flagship achievement of the 2025/2026 executive tenure, was graced by the Head of Department, Dr. Samuel Ugboaja (Ph.D), the Matron, Mrs. Prisca Okochi, and the Patron, Dr. Charles Osodeke and some amazing speakers .</p>
+
+  <p class="sec-label">Photos</p>
+  <div class="photo-mosaic ts-mosaic" style="margin-bottom:32px;">
+    <div class="pm-cell pm-big ts-photo"><img src="images/tech-summit-gallery/01.png" alt="Nacos Tech Summit 2026 photo 1"/></div>
+    <div class="pm-cell ts-photo"><img src="images/tech-summit-gallery/02.png" alt="Nacos Tech Summit 2026 photo 2"/></div>
+    <div class="pm-cell ts-photo"><img src="images/tech-summit-gallery/03.png" alt="Nacos Tech Summit 2026 photo 3"/></div>
+    <a href="tech-summit-gallery.html" class="pm-cell pm-more ts-view-more" data-count="Click to view all 29 photos →"><img src="images/tech-summit-gallery/04.png" alt="view more photos"/></a>
+  </div>
+
+  <!-- VIDEOS: 4 portrait boxes + 1 landscape featured -->
+  <p class="sec-label">Videos</p>
+  <div class="portrait-video-grid">
+    <div class="portrait-video-box" data-video="videos/v1.mp4" style="background-image:url('videos/thumb-v1.jpg');background-size:cover;background-position:center top;">
+      <div class="play-ring"><i class="ti ti-player-play"></i></div>
+      <span class="vid-label">Tech Summit Clip 1</span>
+      <span class="vid-dur">0:45</span>
+    </div>
+    <div class="portrait-video-box" data-video="videos/v2.mp4" style="background-image:url('videos/thumb-v2.jpg');background-size:cover;background-position:center top;">
+      <div class="play-ring"><i class="ti ti-player-play"></i></div>
+      <span class="vid-label">Tech Summit Clip 2</span>
+      <span class="vid-dur">0:54</span>
+    </div>
+    <div class="portrait-video-box" data-video="videos/v3.mp4" style="background-image:url('videos/thumb-v3.jpg');background-size:cover;background-position:center top;">
+      <div class="play-ring"><i class="ti ti-player-play"></i></div>
+      <span class="vid-label">Tech Summit Clip 3</span>
+      <span class="vid-dur">0:50</span>
+    </div>
+    <div class="portrait-video-box" data-video="videos/v4.mp4" style="background-image:url('videos/thumb-v4.jpg');background-size:cover;background-position:center top;">
+      <div class="play-ring"><i class="ti ti-player-play"></i></div>
+      <span class="vid-label">Tech Summit Clip 4</span>
+      <span class="vid-dur">0:29</span>
+    </div>
+    <div class="portrait-video-box" data-video="videos/tech-summit-extra.mp4" style="background-image:url('videos/tech-summit-extra-thumb.jpg');background-size:cover;background-position:center top;">
+      <div class="play-ring"><i class="ti ti-player-play"></i></div>
+      <span class="vid-label">Tech Summit Clip 5</span>
+      <span class="vid-dur">0:31</span>
+    </div>
+  </div>
+
+  <!-- Featured landscape video -->
+  <div class="featured-video-box" data-video="videos/tech-summit-featured.mp4" style="background-image:url('videos/tech-summit-featured-thumb.jpg');background-size:cover;background-position:center top;">
+    <span class="featured-badge">&#9733; Featured Highlight</span>
+    <div class="play-ring-lg"><i class="ti ti-player-play"></i></div>
+    <span class="featured-title">Tech Summit 2026 — Full Event Highlight</span>
+  </div>
+
+  <!-- SPEAKERS — 6 total -->
+  <p class="sec-label">Featured Speakers</p>
+  <div class="speakers-grid-6">
+    <div class="speaker-card">
+      <div class="spk-av"><span>SO</span></div>
+      <p class="spk-name">Dr. Samuel Ugboaja</p>
+      <p class="spk-role">Head of Department Computer Science</p>
+    </div>
+    <div class="speaker-card">
+      <div class="spk-av"><span>PO</span></div>
+      <p class="spk-name">Mrs. Prisca Okochi</p>
+      <p class="spk-role">Matron</p>
+    </div>
+    <div class="speaker-card">
+      <div class="spk-av"><span>CO</span></div>
+      <p class="spk-name"> Dr. Charles Osodeke</p>
+      <p class="spk-role">Patron</p>
+    </div>
+    <div class="speaker-card">
+      <div class="spk-av"><span>DO</span></div>
+      <p class="spk-name">Daniel Obiyo</p>
+      <p class="spk-role">AI Researcher & Data Scientist</p>
+    </div>
+    <div class="speaker-card">
+      <div class="spk-av"><span>KI</span></div>
+      <p class="spk-name">Kelechi Imo</p>
+      <p class="spk-role">Executive Director TRAJDEN</p>
+    </div>
+    <div class="speaker-card">
+      <div class="spk-av"><span>OE</span></div>
+      <p class="spk-name">Ogbonna Ohakwe</p>
+      <p class="spk-role">Digital Entrepreneur</p>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="fi">
+    <div>
+      <p class="sf-name">2025/2026 NACOS EXECUTIVES</p>
+      <p class="sf-tag">Shaping the university's digital future through strong technical leadership and governance.</p>
+    </div>
+    <div class="sf-col">
+      <h4>Resources</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Faculty Portal</a>
+    </div>
+    <div class="sf-col">
+      <h4>Contact</h4>
+      <a href="https://mail.google.com/mail/?view=cm&to=nacosltd@gmail.com" target="_blank" rel="noopener">nacosltd@gmail.com</a>
+      <span>Michael Okpara University Of Agriculture Umudike</span>
+    </div>
+  </div>
+  <p class="sf-copy">&copy; By Chikezie Chimaobi Aselm. All rights reserved.</p>
+</footer>
+
+  <!-- VIDEO MODAL -->
+  <div class="vid-modal-overlay" id="vidModal">
+    <div class="vid-modal-inner">
+      <button class="vid-modal-close" id="vidModalClose">&times;</button>
+      <video id="vidModalVideo" controls style="width:100%;height:100%;display:block;background:#000;"></video>
+    </div>
+  </div>
+
+<script src="js/main.js"></script>
+  <script>
+  // ── Video modal (local MP4) ──
+  (function(){
+    var modal    = document.getElementById('vidModal');
+    var inner    = modal ? modal.querySelector('.vid-modal-inner') : null;
+    var video    = document.getElementById('vidModalVideo');
+    var closeBtn = document.getElementById('vidModalClose');
+    if (!modal || !video) return;
+
+    // Resize modal once we know video dimensions
+    video.addEventListener('loadedmetadata', function(){
+      if (video.videoHeight > video.videoWidth) {
+        inner.style.aspectRatio = '9/16';
+        inner.style.maxWidth = '380px';
+      } else {
+        inner.style.aspectRatio = '16/9';
+        inner.style.maxWidth = '860px';
+      }
+    });
+
+    document.querySelectorAll('[data-video]').forEach(function(el){
+      el.addEventListener('click', function(){
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function(){
+          video.src = el.dataset.video;
+          video.load();
+          video.play().catch(function(err){ console.log('Play error:', err); });
+        }, 50);
+      });
+    });
+
+    function closeModal(){
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+    }
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+  })();
+  </script>
+
+</body>
+</html>

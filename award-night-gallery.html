@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){try{var t=localStorage.getItem('nacos-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Award Night 2026 Full Gallery NACOS MOUAU</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── GALLERY PAGE ── */
+    .gallery-hero {
+      background: var(--g-dark);
+      padding: 100px 40px 48px;
+    }
+    .gallery-hero .inner { max-width: 1120px; margin: 0 auto; }
+    .gallery-hero .breadcrumb a { color: rgba(255,255,255,.55); }
+    .gallery-hero .breadcrumb .cur { color: #7ed8a4; }
+    .gallery-hero h1 {
+      font-family: var(--ff-head); font-size: clamp(2rem,4vw,3rem);
+      font-weight: 900; letter-spacing: -.025em; color: #fff;
+      margin-bottom: 10px; line-height: 1.1;
+    }
+    .gallery-hero p { color: rgba(255,255,255,.65); font-size: .95rem; max-width: 520px; }
+    .gallery-meta { display:flex; gap:18px; margin-top:18px; flex-wrap:wrap; }
+    .gallery-meta span {
+      display:flex; align-items:center; gap:6px;
+      color: rgba(255,255,255,.6); font-size:.82rem; font-weight:600;
+    }
+    .gallery-meta i { font-size:1rem; color: #7ed8a4; }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 64px; z-index: 100;
+      padding: 0 40px;
+      transition: background-color .35s ease;
+    }
+    .filter-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: flex; align-items: center; gap: 8px;
+      height: 54px; overflow-x: auto;
+    }
+    .filter-inner::-webkit-scrollbar { display: none; }
+    .filter-btn {
+      flex-shrink: 0;
+      padding: 6px 18px; border-radius: 50px;
+      border: 1.5px solid var(--border);
+      background: transparent; color: var(--txt-mid);
+      font-family: var(--ff-body); font-size: .82rem; font-weight: 600;
+      cursor: pointer; transition: var(--ease); white-space: nowrap;
+    }
+    .filter-btn:hover { border-color: var(--g-mid); color: var(--g-mid); }
+    .filter-btn.active { background: var(--g-dark); border-color: var(--g-dark); color: #fff; }
+    .filter-count { margin-left: auto; flex-shrink: 0; font-size: .8rem; color: var(--txt-soft); font-weight: 500; }
+
+    /* ── MASONRY GRID ── */
+    .gallery-body {
+      max-width: 1120px; margin: 0 auto;
+      padding: 40px 40px 80px;
+    }
+
+    .masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-auto-rows: 200px;
+      gap: 12px;
+    }
+    .masonry-item {
+      border-radius: var(--r-md);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: var(--border);
+      opacity: 0;
+      transform: translateY(24px);
+      animation: rise .5s ease forwards;
+      grid-row: span 1;
+    }
+    .masonry-item[data-orient="portrait"] {
+      grid-row: span 2;
+    }
+    .masonry-item:not([data-orient]) {
+      grid-row: span 2;
+    }
+    .masonry-item img {
+      width: 100%; height: 100%; display: block;
+      object-fit: cover;
+      transition: transform .45s cubic-bezier(.4,0,.2,1);
+    }
+    .masonry-item:hover img { transform: scale(1.05); }
+    .masonry-item .img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,61,31,.7) 0%, transparent 55%);
+      opacity: 0; transition: opacity .3s ease;
+      display: flex; align-items: flex-end;
+      padding: 14px;
+    }
+    .masonry-item:hover .img-overlay { opacity: 1; }
+    .img-overlay .img-num {
+      font-size: .72rem; font-weight: 700; color: rgba(255,255,255,.8);
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+    .expand-icon {
+      position: absolute; top: 10px; right: 10px;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,.2); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: .9rem;
+      opacity: 0; transform: scale(.8);
+      transition: opacity .3s ease, transform .3s ease;
+    }
+    .masonry-item:hover .expand-icon { opacity: 1; transform: scale(1); }
+
+    /* staggered animation delays */
+    .masonry-item:nth-child(1)  { animation-delay: .05s; }
+    .masonry-item:nth-child(2)  { animation-delay: .08s; }
+    .masonry-item:nth-child(3)  { animation-delay: .11s; }
+    .masonry-item:nth-child(4)  { animation-delay: .14s; }
+    .masonry-item:nth-child(5)  { animation-delay: .17s; }
+    .masonry-item:nth-child(6)  { animation-delay: .20s; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.93);
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-inner {
+      position: relative;
+      max-width: 92vw; max-height: 90vh;
+      display: flex; align-items: center; justify-content: center;
+      animation: lbIn .22s ease both;
+    }
+    @keyframes lbIn { from { opacity:0; transform:scale(.93); } to { opacity:1; transform:scale(1); } }
+    .lightbox-inner img {
+      max-width: 100%; max-height: 88vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 40px 100px rgba(0,0,0,.8);
+      display: block;
+    }
+    .lb-close {
+      position: fixed; top: 20px; right: 24px;
+      background: rgba(255,255,255,.12); border: none; border-radius: 50%;
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.4rem; cursor: pointer; transition: background .2s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,.22); }
+    .lb-nav {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.12); border: none; border-radius: 50%;
+      width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.4rem; cursor: pointer; transition: background .2s;
+    }
+    .lb-nav:hover { background: rgba(255,255,255,.22); }
+    .lb-prev { left: 16px; }
+    .lb-next { right: 16px; }
+    .lb-counter {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,.55); font-size: .82rem; font-weight: 600; letter-spacing: .04em;
+    }
+
+    /* ── back to top ── */
+    .back-to-top {
+      position: fixed; bottom: 32px; right: 32px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--g-dark); color: #fff;
+      border: none; cursor: pointer; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--sh-md);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .3s ease, transform .3s ease;
+      z-index: 400;
+    }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); }
+    .back-to-top:hover { background: var(--g-mid); }
+
+    @media(max-width:768px){
+      .masonry-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; gap: 10px; }
+      .gallery-hero { padding: 90px 20px 36px; }
+      .gallery-body { padding: 24px 14px 60px; }
+      .filter-bar { padding: 0 14px; }
+    }
+    @media(max-width:480px){
+      .masonry-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; }
+      .lb-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div id="sitePreloader" class="preloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <img src="images/nacos-logo.png" alt="" class="preloader-logo"/>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+</div>
+<noscript><style>.preloader{display:none!important;}</style></noscript>
+
+
+<header class="navbar scrolled" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/nacos-logo.png" alt="NACOS" class="logo-img"/>
+      <img src="images/mouau-logo.png" alt="MOUAU" class="logo-img"/>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html"        class="nav-link">Home</a>
+      <a href="achievements.html" class="nav-link active">Achievements</a>
+      <a href="executives.html"   class="nav-link">Executives</a>
+      <a href="contact.html"      class="nav-link">Contact</a>
+    </nav>
+    <a href="executives.html" class="btn btn-green nav-cta">See More</a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="ti ti-sun"></i><i class="ti ti-moon"></i></button>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="gallery-hero">
+  <div class="inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <a href="achievements.html">Achievements</a>
+      <span>/</span>
+      <a href="award night.html">Award Night 2026</a>
+      <span>/</span>
+      <span class="cur">Full Gallery</span>
+    </div>
+    <h1>Award Night 2026 Gallery</h1>
+    <p>All 6 captured moments from a glamorous evening of excellence, recognition, and celebration at the NACOS Award Night 2026.</p>
+    <div class="gallery-meta">
+      <span><i class="ti ti-calendar"></i> April 20, 2026</span>
+      <span><i class="ti ti-map-pin"></i> MOUAU Conference Centre</span>
+      <span><i class="ti ti-photo"></i> 6 Photos</span>
+    </div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-inner">
+    <a href="award-night.html" class="filter-btn" style="display:flex;align-items:center;gap:5px;text-decoration:none;">
+      <i class="ti ti-arrow-left" style="font-size:.85rem;"></i> Back to Event
+    </a>
+    <button class="filter-btn active" >All Photos</button>
+    <span class="filter-count" id="photoCount">6 photos</span>
+  </div>
+</div>
+
+<div class="gallery-body">
+  <div class="masonry-grid" id="masonryGrid">
+    <!-- Photos inserted by JS -->
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lb-close" id="lbClose"><i class="ti ti-x"></i></button>
+  <button class="lb-nav lb-prev" id="lbPrev"><i class="ti ti-chevron-left"></i></button>
+  <div class="lightbox-inner">
+    <img id="lbImg" src="" alt=""/>
+  </div>
+  <button class="lb-nav lb-next" id="lbNext"><i class="ti ti-chevron-right"></i></button>
+  <div class="lb-counter" id="lbCounter">1 / 6</div>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="ti ti-arrow-up"></i>
+</button>
+
+<footer class="site-footer">
+  <div class="fi">
+    <div>
+      <p class="sf-name">2025/2026 NACOS EXECUTIVES</p>
+      <p class="sf-tag">Shaping the university's digital future through strong technical leadership and governance.</p>
+    </div>
+    <div class="sf-col">
+      <h4>Resources</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Faculty Portal</a>
+    </div>
+    <div class="sf-col">
+      <h4>Contact</h4>
+      <a href="https://mail.google.com/mail/?view=cm&to=nacosltd@gmail.com" target="_blank" rel="noopener">nacosltd@gmail.com</a>
+      <span>Michael Okpara University Of Agriculture Umudike</span>
+    </div>
+  </div>
+  <p class="sf-copy">&copy; By Chikezie Chimaobi Aselm. All rights reserved.</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(function(){
+  // All 6 photos
+  const photos = Array.from({length:6}, (_,i) => ({
+    src: `images/award-night-gallery/${String(i+1).padStart(2,'0')}.jpg`,
+    num: i+1
+  }));
+
+  const orientations = new Array(6).fill('unknown');
+  let currentIndex = 0;
+  let visiblePhotos = [...photos];
+
+  const grid = document.getElementById('masonryGrid');
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCounter = document.getElementById('lbCounter');
+  const photoCount = document.getElementById('photoCount');
+
+  function buildGrid(list) {
+    grid.innerHTML = '';
+    list.forEach((photo, idx) => {
+      const item = document.createElement('div');
+      item.className = 'masonry-item';
+      item.dataset.index = idx;
+      item.dataset.src = photo.src;
+      item.innerHTML = `
+        <img src="${photo.src}" alt="Award Night 2026 Photo ${photo.num}" loading="lazy"
+             onload="detectOrientation(this, ${photo.num - 1})"/>
+        <div class="img-overlay">
+          <span class="img-num">#${String(photo.num).padStart(2,'0')}</span>
+        </div>
+        <div class="expand-icon"><i class="ti ti-arrows-maximize"></i></div>
+      `;
+      item.addEventListener('click', () => openLightbox(idx, list));
+      grid.appendChild(item);
+    });
+    photoCount.textContent = list.length + ' photos';
+  }
+
+  window.detectOrientation = function(img, photoIdx) {
+    const item = img.closest('.masonry-item');
+    if (img.naturalHeight > img.naturalWidth) {
+      orientations[photoIdx] = 'portrait';
+      item.dataset.orient = 'portrait';
+      item.style.gridRow = 'span 2';
+    } else {
+      orientations[photoIdx] = 'landscape';
+      item.dataset.orient = 'landscape';
+      item.style.gridRow = 'span 1';
+    }
+  };
+
+  window.filterGallery = function(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    if (type === 'all') {
+      visiblePhotos = [...photos];
+    } else {
+      visiblePhotos = photos.filter((_,i) => orientations[i] === type || orientations[i] === 'unknown');
+      setTimeout(() => {
+        const items = grid.querySelectorAll('.masonry-item');
+        items.forEach(item => {
+          if (item.dataset.orient && item.dataset.orient !== type) {
+            item.style.display = 'none';
+          }
+        });
+        const visible = [...items].filter(i => i.style.display !== 'none');
+        photoCount.textContent = visible.length + ' photos';
+      }, 200);
+    }
+    buildGrid(visiblePhotos);
+  };
+
+  function openLightbox(idx, list) {
+    currentIndex = idx;
+    lbImg.src = list[idx].src;
+    lbCounter.textContent = `${idx + 1} / ${list.length}`;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function navigate(dir) {
+    currentIndex = (currentIndex + dir + visiblePhotos.length) % visiblePhotos.length;
+    lbImg.style.opacity = '0';
+    setTimeout(() => {
+      lbImg.src = visiblePhotos[currentIndex].src;
+      lbImg.style.opacity = '1';
+      lbCounter.textContent = `${currentIndex + 1} / ${visiblePhotos.length}`;
+    }, 150);
+  }
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbPrev').addEventListener('click', () => navigate(-1));
+  document.getElementById('lbNext').addEventListener('click', () => navigate(1));
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+  });
+
+  lbImg.style.transition = 'opacity .15s ease';
+
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  buildGrid(photos);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){try{var t=localStorage.getItem('nacos-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | NACOS MOUAU</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    .contact-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      background: var(--cream);
+    }
+    .contact-inner {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+    .contact-chip {
+      display: inline-block;
+      background: var(--g-light);
+      color: var(--g-mid);
+      font-size: .65rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 50px;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .contact-title {
+      font-family: var(--ff-head);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      color: var(--txt);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .contact-sub {
+      font-size: .93rem;
+      color: var(--txt-mid);
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 40px 36px;
+      box-shadow: var(--sh-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .contact-icon-wrap {
+      width: 64px; height: 64px;
+      background: var(--g-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      color: var(--g-mid);
+    }
+    .contact-email-label {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--txt-soft);
+      margin-bottom: 4px;
+    }
+    .contact-email-link {
+      font-family: var(--ff-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--g-dark);
+      text-decoration: none;
+      transition: var(--ease);
+      word-break: break-all;
+    }
+    .contact-email-link:hover { color: var(--g-mid); }
+    .contact-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--border);
+      border-radius: 2px;
+    }
+    .contact-note {
+      font-size: .82rem;
+      color: var(--txt-soft);
+      line-height: 1.6;
+    }
+    @media(max-width:480px){
+      .contact-card { padding: 28px 20px; }
+      .contact-email-link { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div id="sitePreloader" class="preloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <img src="images/nacos-logo.png" alt="" class="preloader-logo"/>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+</div>
+<noscript><style>.preloader{display:none!important;}</style></noscript>
+
+
+<header class="navbar scrolled" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/nacos-logo.png" alt="NACOS" class="logo-img"/>
+      <img src="images/mouau-logo.png" alt="MOUAU" class="logo-img"/>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html"        class="nav-link">Home</a>
+      <a href="achievements.html" class="nav-link">Achievements</a>
+      <a href="executives.html"   class="nav-link">Executives</a>
+      <a href="contact.html"      class="nav-link active">Contact</a>
+    </nav>
+    <a href="executives.html" class="btn btn-green nav-cta">See More</a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="ti ti-sun"></i><i class="ti ti-moon"></i></button>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="contact-page">
+  <div class="contact-inner">
+    <span class="contact-chip">NACOS MOUAU 2025/2026</span>
+    <h1 class="contact-title">Reach out to us</h1>
+    <p class="contact-sub">Have a question, suggestion, or want to collaborate? We'd love to hear from you.</p>
+
+    <div class="contact-card">
+      <div class="contact-icon-wrap">
+        <i class="ti ti-mail"></i>
+      </div>
+      <div>
+        <p class="contact-email-label">Email Address</p>
+        <a href="https://mail.google.com/mail/?view=cm&to=nacostechsummit@gmail.com" target="_blank" rel="noopener" class="contact-email-link">nacostechsummit@gmail.com</a>
+      </div>
+      <div class="contact-divider"></div>
+      <p class="contact-note">We typically respond within 24–48 hours. For urgent matters, please include &ldquo;URGENT&rdquo; in your subject line.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="fi">
+    <div>
+      <p class="sf-name">2025/2026 NACOS EXECUTIVES</p>
+      <p class="sf-tag">Shaping the university's digital future through strong technical leadership and governance.</p>
+    </div>
+    <div class="sf-col">
+      <h4>Resources</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Faculty Portal</a>
+    </div>
+    <div class="sf-col">
+      <h4>Contact</h4>
+      <a href="https://mail.google.com/mail/?view=cm&to=nacostechsummit@gmail.com" target="_blank" rel="noopener">nacosltd@gmail.com</a>
+      <span>Michael Okpara University Of Agriculture Umudike</span>
+    </div>
+  </div>
+  <p class="sf-copy">&copy; By Chikezie Chimaobi Aselm. All rights reserved.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

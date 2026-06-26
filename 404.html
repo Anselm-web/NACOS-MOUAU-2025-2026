@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){try{var t=localStorage.getItem('nacos-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Not Found – NACOS MOUAU</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .error-code {
+      font-family: var(--ff-head);
+      font-size: clamp(5rem, 15vw, 9rem);
+      font-weight: 900;
+      color: var(--g-dark);
+      line-height: 1;
+      margin-bottom: 12px;
+      opacity: .12;
+    }
+    .error-icon {
+      font-size: 3rem;
+      color: var(--g-mid);
+      margin-bottom: 20px;
+    }
+    .error-title {
+      font-family: var(--ff-head);
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 900;
+      color: var(--txt);
+      margin-bottom: 10px;
+    }
+    .error-msg {
+      color: var(--txt-mid);
+      font-size: .95rem;
+      max-width: 380px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .error-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  </style>
+</head>
+<body>
+<div id="sitePreloader" class="preloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <img src="images/nacos-logo.png" alt="" class="preloader-logo"/>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+</div>
+<noscript><style>.preloader{display:none!important;}</style></noscript>
+
+<header class="navbar scrolled" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/nacos-logo.png" alt="NACOS" class="logo-img"/>
+      <img src="images/mouau-logo.png" alt="MOUAU" class="logo-img"/>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html"          class="nav-link">Home</a>
+      <a href="achievements.html"   class="nav-link">Achievements</a>
+      <a href="executives.html"     class="nav-link">Executives</a>
+      <a href="administration.html" class="nav-link">Administration</a>
+      <a href="contact.html"        class="nav-link">Contact</a>
+    </nav>
+    <a href="executives.html" class="btn btn-green nav-cta">See More</a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="ti ti-sun"></i><i class="ti ti-moon"></i></button>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="error-page">
+  <div class="error-code">404</div>
+  <div class="error-icon"><i class="ti ti-map-search"></i></div>
+  <h1 class="error-title">Page not found</h1>
+  <p class="error-msg">The page you're looking for doesn't exist or may have been moved. Let's get you back on track.</p>
+  <div class="error-actions">
+    <a href="index.html" class="btn btn-green">Go to Homepage</a>
+    <a href="executives.html" class="btn btn-outline">View Executives</a>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

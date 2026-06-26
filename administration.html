@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){try{var t=localStorage.getItem('nacos-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Administration – NACOS MOUAU</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    .admin-intro {
+      background: var(--cream);
+      padding: 100px 40px 56px;
+      text-align: center;
+    }
+    .admin-intro .sub {
+      display: inline-block;
+      background: var(--g-light);
+      color: var(--g-mid);
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 50px;
+      border: 1px solid var(--border);
+      margin-bottom: 18px;
+    }
+    .admin-intro h1 {
+      font-family: var(--ff-head);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--txt);
+      letter-spacing: -.03em;
+      margin-bottom: 14px;
+    }
+    .admin-intro p {
+      color: var(--txt-mid);
+      font-size: .95rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Admin grid */
+    .admin-section {
+      background: var(--cream);
+      padding: 0 40px 80px;
+    }
+    .admin-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    /* Admin card */
+    .admin-card {
+      background: var(--white);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .admin-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--sh-md);
+    }
+    .admin-card .ac-photo {
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+      background: var(--g-light);
+    }
+    .admin-card .ac-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .admin-card:hover .ac-photo img { transform: scale(1.04); }
+    .admin-card .ac-info {
+      padding: 20px 22px 24px;
+    }
+    .admin-card .ac-order {
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--g-mid);
+      margin-bottom: 6px;
+    }
+    .admin-card .ac-name {
+      font-family: var(--ff-head);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--txt);
+      margin-bottom: 4px;
+    }
+    .admin-card .ac-title {
+      font-size: .82rem;
+      color: var(--txt-soft);
+      font-weight: 500;
+    }
+
+    /* Section label */
+    .admin-label {
+      max-width: 1120px;
+      margin: 0 auto 28px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--txt-soft);
+    }
+
+    @media(max-width: 640px) {
+      .admin-intro { padding: 90px 20px 40px; }
+      .admin-section { padding: 0 16px 60px; }
+      .admin-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .admin-card .ac-photo { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+<div id="sitePreloader" class="preloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <img src="images/nacos-logo.png" alt="" class="preloader-logo"/>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+</div>
+<noscript><style>.preloader{display:none!important;}</style></noscript>
+
+
+<!-- NAVBAR -->
+<header class="navbar scrolled" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/nacos-logo.png" alt="NACOS" class="logo-img"/>
+      <img src="images/mouau-logo.png" alt="MOUAU" class="logo-img"/>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html"          class="nav-link">Home</a>
+      <a href="achievements.html"   class="nav-link">Achievements</a>
+      <a href="executives.html"     class="nav-link">Executives</a>
+      <a href="administration.html" class="nav-link active">Administration</a>
+      <a href="contact.html"        class="nav-link">Contact</a>
+    </nav>
+    <a href="executives.html" class="btn btn-green nav-cta">See More</a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="ti ti-sun"></i><i class="ti ti-moon"></i></button>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- INTRO -->
+<div class="admin-intro">
+  <span class="sub">NACOS MOUAU 2025/2026</span>
+  <h1>Administration</h1>
+  <p>Meet the leaders and advisers dedicated to guiding the growth and success of the NACOS MOUAU chapter.</p>
+</div>
+
+<!-- ADMIN GRID -->
+<section class="admin-section">
+  <p class="admin-label">Leadership & Advisory Team</p>
+  <div class="admin-grid">
+
+    <!-- Admin 01 -->
+    <div class="admin-card">
+      <div class="ac-photo">
+        <img src="images/Administration/01.png" alt="Administrator 1"/>
+      </div>
+      <div class="ac-info">
+        <p class="ac-order"></p>
+        <p class="ac-name">Prof. I.E. Otuokere</p>
+        <p class="ac-title">Dean Colpas</p>
+      </div>
+    </div>
+
+    <!-- Admin 02 -->
+    <div class="admin-card">
+      <div class="ac-photo">
+        <img src="images/Administration/02.png" alt="Administrator 2"/>
+      </div>
+      <div class="ac-info">
+        <p class="ac-order"></p>
+        <p class="ac-name"> Comr. Uchendu Kingsely</p>
+        <p class="ac-title"> Staff Adviser Colpas </p>
+      </div>
+    </div>
+
+    <!-- Admin 03 -->
+    <div class="admin-card">
+      <div class="ac-photo">
+        <img src="images/Administration/03.png" alt="Administrator 3"/>
+      </div>
+      <div class="ac-info">
+        <p class="ac-order"></p>
+        <p class="ac-name">Dr. Samuel Ugboaja</p>
+        <p class="ac-title">HOD- Computer Science</p>
+      </div>
+    </div>
+
+    <!-- Admin 04 -->
+    <div class="admin-card">
+      <div class="ac-photo">
+        <img src="images/Administration/04.png" alt="Administrator 4"/>
+      </div>
+      <div class="ac-info">
+        <p class="ac-order"></p>
+        <p class="ac-name"> Dr. Samuel Osodeke</p>
+        <p class="ac-title">Patron</p>
+      </div>
+    </div>
+
+    <!-- Admin 05 -->
+    <div class="admin-card">
+      <div class="ac-photo">
+        <img src="images/Administration/05.png" alt="Administrator 5"/>
+      </div>
+      <div class="ac-info">
+        <p class="ac-order"></p>
+        <p class="ac-name"> Mrs. Prisca Okochi (Ph.D)</p>
+        <p class="ac-title">Matron</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="fi">
+    <div>
+      <p class="sf-name">2025/2026 NACOS EXECUTIVES</p>
+      <p class="sf-tag">Shaping the university's digital future through strong technical leadership and governance.</p>
+    </div>
+    <div class="sf-col">
+      <h4>Resources</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Faculty Portal</a>
+    </div>
+    <div class="sf-col">
+      <h4>Contact</h4>
+      <a href="https://mail.google.com/mail/?view=cm&to=nacosltd@gmail.com" target="_blank" rel="noopener">nacosltd@gmail.com</a>
+      <span>Michael Okpara University Of Agriculture Umudike</span>
+    </div>
+  </div>
+  <p class="sf-copy">&copy; By Chikezie Chimaobi Aselm. All rights reserved.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
