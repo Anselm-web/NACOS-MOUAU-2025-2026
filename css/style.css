@@ -473,7 +473,7 @@ body.is-loading { overflow: hidden; }
 @media (max-width: 1024px) {
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
   .precision .wrap { flex-direction: column; gap: 36px; }
-  .vision-card { flex: none; width: 100%; max-width: 480px; }
+  .vision-card { flex: none; width: 100%; max-width: none; }
   .hp-male   { height: 360px; }
   .hp-female { height: 310px; margin-left: -140px; }
 }
